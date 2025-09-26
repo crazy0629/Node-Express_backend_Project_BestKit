@@ -1,8 +1,17 @@
+/**
+ * Environment configuration and validation.
+ *
+ * Loads variables from .env using dotenv and validates them with Zod.
+ * If validation fails, the process exits with a helpful error.
+ */
 import dotenv from 'dotenv';
 import { z } from 'zod';
 
 dotenv.config();
 
+/**
+ * Zod schema describing the required environment variables and their types.
+ */
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   PORT: z.coerce.number().int().positive().default(4000),
@@ -17,4 +26,7 @@ if (!parsed.success) {
   process.exit(1);
 }
 
+/**
+ * Strongly-typed, validated environment variables for safe use across the app.
+ */
 export const env = parsed.data;

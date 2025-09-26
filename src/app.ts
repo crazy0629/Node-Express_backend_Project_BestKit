@@ -1,10 +1,11 @@
-import express from 'express';
-import helmet from 'helmet';
 import cors from 'cors';
+import express from 'express';
 import rateLimit from 'express-rate-limit';
-import routes from './routes';
-import { errorHandler } from './middleware/errorHandler';
+import helmet from 'helmet';
+
 import { httpLogger } from './config/logger';
+import { errorHandler } from './middleware/errorHandler';
+import routes from './routes';
 
 const app = express();
 

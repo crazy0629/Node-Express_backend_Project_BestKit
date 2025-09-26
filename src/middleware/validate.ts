@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import { AnyZodObject, ZodError } from 'zod';
 import { StatusCodes } from 'http-status-codes';
+import { ZodError, ZodTypeAny } from 'zod';
 
-export const validate = (schema: AnyZodObject) =>
+export const validate = (schema: ZodTypeAny) =>
   (req: Request, res: Response, next: NextFunction) => {
     try {
       schema.parse({

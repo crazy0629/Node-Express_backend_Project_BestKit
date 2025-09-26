@@ -1,4 +1,5 @@
 import { Schema, model, Document } from 'mongoose';
+
 import { hashPassword, comparePassword } from '../utils/passwords';
 
 export interface IUser extends Document {
